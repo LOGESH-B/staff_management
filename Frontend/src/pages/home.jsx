@@ -1,9 +1,8 @@
-
-
 import React from 'react'
 import NavBar from '../components/navbar'
 import Table from '../components/table'
-import NewUser from './newuser'
+import NewUser from './Newuser'
+import NewAchiev from './Newachiev'
 
 function Home() {
   
@@ -12,6 +11,7 @@ function Home() {
     <NavBar />
     <Table   />
     <NewUser />
+    <NewAchiev/>
     </>
   )
 }

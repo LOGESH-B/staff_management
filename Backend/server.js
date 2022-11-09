@@ -34,7 +34,9 @@ app.post('/newuser',(req,res)=>{
     console.log(req.body)
 })
 
-
+app.post('/newachiev',(req,res)=>{
+    console.log(req.body)
+})
 
 
 //listening port
