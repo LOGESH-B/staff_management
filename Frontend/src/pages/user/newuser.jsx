@@ -2,6 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import {useState} from 'react'
 import "./newuser.css"
+import api_url from "../../constants/constant"
 
 function NewUser() {
 
@@ -11,6 +12,8 @@ function NewUser() {
     const [experiance,setexperiance]=useState('')
     const [department,setdepartment]=useState('')
     const [rank,setrank]=useState('')
+
+    const api= Axios.create({ baseURL: api_url})
 
     const handlesubmit=async (e)=>{
         e.preventDefault()
@@ -23,28 +26,16 @@ function NewUser() {
             rank:rank
         }
          console.log(data)
-        const api= Axios.create({ baseURL: 'http://localhost:4000/'})
-console.log(api)
-        await api.post('/newuser',data)
+        await api.post('/user/newuser',data)
     }
 
   return (
     <div>
-        {/* <form onSubmit={handlesubmit} method="post">
-            <input type="text" name="name" id="name" onChange={(e)=>setname(e.target.value)} />
-            <input type="text" name="email" id="email" onChange={(e)=>setemail(e.target.value)} />
-            <input type="text" name="password" id="password" onChange={(e)=>setpassword(e.target.value)} />
-            <input type="text" name="experiance" id="experiance" onChange={(e)=>setexperiance(e.target.value)} />
-            <input type="text" name="department" id="department" onChange={(e)=>setdepartment(e.target.value)} />
-            <input type="text" name="rank" id="rank" onChange={(e)=>setrank(e.target.value)} />
-            <button type='submit'>Submit</button></form> */}
-
-
             <div className="container" style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">
                         <div className="card shadow">
-                            <div><p className="card-title reg">Register</p></div>
+                            <div><p className="card-title reg">New User</p></div>
                             <div className="card-body">
                                 <form onSubmit={handlesubmit} method="post" className="validated-form" noValidate>
                                     <div className="mb-3">

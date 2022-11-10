@@ -2,6 +2,7 @@
 
 
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function NavBar() {
   return (
@@ -16,10 +17,13 @@ function NavBar() {
     <div className="collapse navbar-collapse " id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <Link to='/' className="nav-link active" aria-current="page">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Features</a>
+          <Link to='/user/getalluser' className="nav-link active" aria-current="page">Add Achievements</Link>
+        </li>
+        <li className="nav-item">
+        <Link to='/user/login' className="nav-link" aria-current="page">Login</Link>
         </li>
       </ul>
     </div>
