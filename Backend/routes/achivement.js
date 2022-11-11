@@ -2,9 +2,10 @@ const express=require('express')
 const router = express.Router()
 
 //controllers import
-const {newAchive} =require('../controllers/achievement_controller')
+const {newAchive,allachievement} =require('../controllers/achievement_controller')
 
 
-router.post('/newachievement',newAchive)
+router.post('/newachievement/:id',newAchive)
+router.get('/getallachievement',allachievement)
 
 module.exports = router ;

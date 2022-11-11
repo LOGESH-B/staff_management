@@ -3,12 +3,17 @@ import "./newachiev.css"
 import Axios from 'axios'
 import {useState} from 'react'
 import api_url from "../../constants/constant"
+import {useParams} from "react-router-dom"
 
-function Newachiev() {
+function Newachiev(props) {
     const [title,setTitle]=useState('')
     const [year,setYear]=useState('')
     const [recognitions,setRecognitions]=useState('')
 
+    //data from params
+    const {id}=useParams()
+    console.log(id)
+    
     //base Url
     const api= Axios.create({ baseURL: api_url})
 
@@ -20,7 +25,7 @@ function Newachiev() {
             recognitions:recognitions,
         }
          console.log(data)
-         await api.post('/achievement/newachievement',data)
+         await api.post(`/achievement/newachievement/${id}`,data)
         }
 
   return (

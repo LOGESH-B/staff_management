@@ -12,8 +12,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/newuser' element={<NewUser />} />
-      <Route path='/user/newachivement' element={<Newachiev/>} />
-      <Route path='/user/getalluser' element={<AddAchivements />} />
+      <Route path='/user/newachivement/:id' element={<Newachiev />} />
+      <Route path='/user/getalluser' element={<AddAchivements  />} />
       <Route path='/user/login' element={< Login/>} />
     </Routes>
     </>
