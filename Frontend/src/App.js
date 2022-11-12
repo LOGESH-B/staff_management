@@ -5,6 +5,7 @@ import NewUser from './pages/user/newuser';
 import Newachiev from './pages/achivement/Newachiev';
 import Login from './pages/user/login';
 import AddAchivements from './pages/achivement/addachivement';
+import Profile from './pages/home/profile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/user/newachivement/:id' element={<Newachiev />} />
       <Route path='/user/getalluser' element={<AddAchivements  />} />
       <Route path='/user/login' element={< Login/>} />
+      <Route path='/user/viewProfile/:id' element={<Profile />} />
     </Routes>
     </>
   );

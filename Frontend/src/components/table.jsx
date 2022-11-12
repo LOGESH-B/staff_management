@@ -1,108 +1,134 @@
 
-
-
+import Axios from 'axios'
+import api_url from "../constants/constant"
 import React from 'react'
-import { useState,useRef,useEffect } from 'react'
-import {Helmet} from "react-helmet";
+import { useState, useRef, useEffect } from 'react'
+import { Helmet } from "react-helmet";
 
+import { Link } from 'react-router-dom'
 
 
 
 function Table() {
+    const [getachivedata, setachiveData] = useState()
+    const [getuserdata, setuserData] = useState()
+
+    const [dispdata, setdispdata] = useState()
+    const [wait, setwait] = useState(false)
+    const [disp, setdisp] = useState('View by User')
+
+    //api call
+    async function apicall() {
+        const api = Axios.create({ baseURL: api_url })
+        const res = await api.get('/achievement/getallachievement');
+        setachiveData(res.data.achivement)
+        setuserData(res.data.user)
+    }
+    useEffect(() => {
+        apicall()
+    }, [])
+    useEffect(() => {
+        if (getachivedata) {
+            setwait(true)
+            setdispdata(getachivedata)
+        }
+    }, [getachivedata, getuserdata])
+
+    const toggle = async () => {
+        // setwait(false)
+        disp == 'View by User' ? setdispdata(getuserdata) : setdispdata(getachivedata);
+        disp == 'View by User' ? setdisp('View by Achievement') : setdisp('View by User');
+        
+    }
+
+
+
+    //adding script for search
     useEffect(() => {
         const script = document.createElement('script')
-    
-      
         script.async = true
-        script.innerHTML=`const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))`
-    
+        script.innerHTML = `    $(document).ready(function () {
+          $("#search").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbody tr").filter(function () {
+              $(this).toggle($(this).text()
+                .toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });`
         document.body.appendChild(script)
-    
         return () => {
-          document.body.removeChild(script)
+            document.body.removeChild(script)
         }
-      }, [])
-    
+    }, []);
+
+
+
     return (
         <>
+            <div className="ms-4">
+                <input type="text" name="search" id="search" placeholder='Search for User' />
+                <button onClick={toggle}>{disp}</button>
+            </div>
             <div className="container">
                 <table className="table table-striped table-hover text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">S.no</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Department</th>
-                            <th scope="col">Year of Achivements</th>
-                            <th scope="col">Brief Achivements details</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><span className="d-inline-block" tabIndex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-sanitize="false"
-                                data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content='<div><div className="row">
-                <div className="col-5">
-                        <img className=" img-thumbnail dg_ncc " src="image/ncc-logo.png" alt="image/ncc-logo.png"  >
-                      </div>
-                      <div className="col-7">
-                        <p className="text-muted mb-0">Name</p>
-                        <h6 id="name">LOGESH B</h6>
-                        <p className="text-muted mb-0">Position</p>
-                        <h6 id="rank">Prof.</h6>
-                        <p className="text-muted mb-0">Year</p>
-                        <h6 id="year">2022</h6>
-                      
-                    
-                      </div>
-                    </div></div>'>
-                                LOGESH B
-                            </span></td>
-                            <td>Information Technology</td>
-                            <td>2022</td>
-                            <td>Yet to achive something</td>
-                            <td>
-                                <div className="row text-center d-flex justif-content-around">
-                                    <div className="col-6"><a href="#" className='btn btn-sm btn-outline-danger'>Delete</a></div>
-                                    <div className="col-6"><a href="#" className='btn btn-sm btn-outline-success'>Edit</a></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>LOGESH B</td>
-                            <td>Information Technology</td>
-                            <td>2022</td>
-                            <td>Yet to achive something</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>LOGESH B</td>
-                            <td>Information Technology</td>
-                            <td>2022</td>
-                            <td>Yet to achive something</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>LOGESH B</td>
-                            <td>Information Technology</td>
-                            <td>2022</td>
-                            <td>Yet to achive something</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>LOGESH B</td>
-                            <td>Information Technology</td>
-                            <td>2022</td>
-                            <td>Yet to achive something</td>
-                        </tr>
+                    {disp == 'View by User' ?
+                        <thead>
+                            <tr>
+                                <th scope="col">S.no</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Achivements</th>
+                                <th scope="col">Awards</th>
+                                <th scope="col">View Profile</th>
+
+                            </tr>
+                        </thead> : <thead>
+                            <tr>
+                                <th scope="col">S.no</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">View Profile</th>
+
+                            </tr>
+                        </thead>}
+                    <tbody id='tbody'>
+                        {disp == 'View by User' ?
+                            wait && dispdata.map((e, i) => (
+
+                                <tr>
+                                    <td>{i}</td>
+                                    <td>
+                                        {e.achiever_id.name}
+                                    </td>
+                                    <td>{e.achiever_id.department}</td>
+                                    <td>{e.year}</td>
+                                    <td>{e.title}</td>
+                                    <td>{e.recognitions}</td>
+                                    <td><Link to={{ pathname: `/user/viewProfile/${e.achiever_id._id}` }}>View  </Link></td>
+
+                                </tr>))
+                            :
+                            wait && dispdata.map((e, i) => (<tr>
+                                <td>{i}</td>
+                                <td>
+                                    {e.name}
+                                </td>
+                                <td>{e.department}</td>
+                                <td><Link to={{ pathname: `/user/viewProfile/${e._id}` }}>View  </Link></td>
+
+                            </tr>
+
+                            ))
+                        }
+
                     </tbody>
                 </table>
-                   
-   
+
+
             </div>
-      
+
 
         </>
 

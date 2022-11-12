@@ -11,9 +11,7 @@ function Home() {
     <>
     <NavBar />
     <Table   />
-    <NewUser />
-    <NewAchiev/>
-    <Login />
+
     </>
   )
 }

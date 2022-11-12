@@ -15,6 +15,12 @@ module.exports.getalluser=async (req,res)=>{
     console.log(alluser)
     res.json(alluser)
 }
+module.exports.userprofile=async (req,res)=>{
+    const alluser= await User.findOne({_id:req.params.id}).populate('achivements');
+    console.log(alluser)
+    res.json(alluser)
+}
+
 
 module.exports.login = (req, res) => {
     const data = {
