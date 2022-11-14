@@ -3,6 +3,7 @@ import "./newuser.css"
 import Axios from 'axios'
 import {useState} from 'react'
 import api_url from "../../constants/constant"
+import NavBar from '../../components/navbar'
 
 function Login() {
     const [email,setEmail]=useState('')
@@ -23,7 +24,8 @@ function Login() {
 
   return (
     <div>
-         <div className="container" style={{ marginTop: "50px", marginBottom: "50px" }}>
+        <NavBar/>
+         <div className="container" style={{ marginTop: "90px", marginBottom: "50px" }}>
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">
                         <div className="card shadow">
