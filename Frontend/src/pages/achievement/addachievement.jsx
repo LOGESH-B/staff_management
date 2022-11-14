@@ -46,16 +46,16 @@ function AddAchivements() {
   }, []);
 
   return (
-    <div className='container'>
+    <div className=''>
       <NavBar />
       <div className="text-center mt-5">
-        <input type="text" name="search" onChange={(e) => setSearch(e.target.value)} id="search" placeholder='Search for User' />
+        <input type="text" name="search" style={{width:"30%"}} onChange={(e) => setSearch(e.target.value)} id="search" placeholder='Search for User' />
       </div>
-
     
+      <div className='container'>
       <table className="table table-striped table-hover text-center mt-5">
         <thead>
-          <tr><th>Name</th><th>Department</th><th>Add Achievement</th></tr>
+          <tr className='table-secondary'><th>Name</th><th>Department</th><th>Add Achievement</th></tr>
          
         </thead>
         <tbody id='tbody'>
@@ -64,14 +64,14 @@ function AddAchivements() {
         <tr>
           <td><b>{e.name}</b></td>
           <td>{e.department}</td>
-          <td><Link className='btn btn-success' to={{ pathname: `/user/newachivement/${e._id}` }}  >Add </Link></td>
+          <td><Link className='btn' style={{background:"#7e3ab5",color:"white"}} to={{ pathname: `/user/newachievement/${e._id}` }}  >Add </Link></td>
         </tr>
 
       ))
       }
       </tbody>
       </table>
-      
+      </div>
 
     </div>
   )

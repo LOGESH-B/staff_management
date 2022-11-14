@@ -64,16 +64,17 @@ function Table() {
 
     return (
         <>
-            <div className="d-flex justify-content-around mt-5">
-                <button onClick={toggle} className="btn btn-success">{disp}</button>
-                <input type="text" name="search" id="search" className='' placeholder='Search for User' />
+        <div className='container'>
+            <div className="d-flex justify-content-between mt-5">
+                <button onClick={toggle} className="btn" style={{background:"#7e3ab5",color:"white"}}>{disp}</button>
+                <input type="text" style={{width:"20%"}} name="search" id="search" placeholder='Search for User' />
             </div>
-
+        </div>
             <div className="container mt-5">
                 <table className="table table-striped table-hover text-center">
                     {disp == 'View by User' ?
                         <thead>
-                            <tr>
+                            <tr className='table-secondary'>
                                 <th scope="col">S.no</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Department</th>
@@ -84,7 +85,7 @@ function Table() {
 
                             </tr>
                         </thead> : <thead>
-                            <tr>
+                            <tr className='table-secondary'> 
                                 <th scope="col">S.no</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Department</th>
@@ -97,7 +98,7 @@ function Table() {
                             wait && dispdata.map((e, i) => (
 
                                 <tr>
-                                    <td>{i}</td>
+                                    <td>{i+1}</td>
                                     <td>
                                         {e.achiever_id.name}
                                     </td>
@@ -105,17 +106,17 @@ function Table() {
                                     <td>{e.year}</td>
                                     <td>{e.title}</td>
                                     <td>{e.recognitions}</td>
-                                    <td><Link to={{ pathname: `/user/viewProfile/${e.achiever_id._id}` }}>View  </Link></td>
+                                    <td><Link to={{ pathname: `/user/viewProfile/${e.achiever_id._id}` }} style={{color:"#7e3ab5"}}>View  </Link></td>
 
                                 </tr>))
                             :
-                            wait && dispdata.map((e, i) => (<tr>
-                                <td>{i}</td>
+                            wait && dispdata.map((e, i) => (<tr className=''>
+                                <td>{i+1}</td>
                                 <td>
                                     {e.name}
                                 </td>
                                 <td>{e.department}</td>
-                                <td><Link to={{ pathname: `/user/viewProfile/${e._id}` }}>View  </Link></td>
+                                <td><Link to={{ pathname: `/user/viewProfile/${e._id}` }} style={{color:"#7e3ab5"}}>View  </Link></td>
 
                             </tr>
 

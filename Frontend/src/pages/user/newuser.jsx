@@ -8,7 +8,6 @@ function NewUser() {
 
     const [name,setname]=useState('')
     const [email,setemail]=useState('')
-    const [password,setpassword]=useState('')
     const [experiance,setexperiance]=useState('')
     const [department,setdepartment]=useState('')
     const [rank,setrank]=useState('')
@@ -20,7 +19,6 @@ function NewUser() {
         const data={
             name:name,
             email:email,
-            password:password,
             experiance:experiance,
             department:department,
             rank:rank
@@ -45,10 +43,6 @@ function NewUser() {
                                     <div className="mb-4">
                                         <label className="form-label" for="email">Email</label>
                                         <input className="form-control" type="text" id="email" name="email" onChange={(e) => setemail(e.target.value)} autofocus required />
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="form-label" for="password">Password</label>
-                                        <input className="form-control" type="password" id="password" name="password" onChange={(e) => setpassword(e.target.value)} autofocus required />
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label" for="dept">Department</label>

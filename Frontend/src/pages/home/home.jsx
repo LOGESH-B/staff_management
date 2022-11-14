@@ -2,18 +2,21 @@ import React from 'react'
 import NavBar from '../../components/navbar'
 import Table from '../../components/table'
 import NewUser from '../user/newuser'
-import NewAchiev from '../achivement/Newachiev'
+import NewAchiev from '../achievement/Newachiev'
 import Login from '../user/login'
+import "./home.css"
 
 function Home() {
   
   return (
     <>
     <NavBar />
-    <Table   />
-
+    <div>
+      <h6 className='h'>Staff Award Management</h6>
+    </div>
+    <Table/>
     </>
   )
 }
 
-export default Home
+export default Home;
