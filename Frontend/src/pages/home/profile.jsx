@@ -33,13 +33,13 @@ function Profile() {
 
   return (
     <>
-   
+   <div className="container">
       {wait && <div>
         <h3>{getdata.name}</h3>
         <h3>{getdata.department}</h3>
         <h3>{getdata.experiance}</h3>
         <h3>{getdata.achivements[0].title}</h3>
-        <table>
+        <table className="table table-striped table-hover text-center">
           <thead>
             <tr>
               <th>Title</th>
@@ -60,6 +60,7 @@ function Profile() {
 
         </table>
       </div>}
+      </div>
     </>
 
 

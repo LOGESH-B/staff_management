@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import api_url from '../../constants/constant'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import NavBar from '../../components/navbar'
 
 function AddAchivements() {
   const [search, setSearch] = useState('')
@@ -46,22 +47,23 @@ function AddAchivements() {
 
   return (
     <div className='container'>
-      <div className="ms-4">
+      <NavBar />
+      <div className="text-center mt-5">
         <input type="text" name="search" onChange={(e) => setSearch(e.target.value)} id="search" placeholder='Search for User' />
       </div>
 
-      {/* <h1>{getdata.map(e=><h1>e.email</h1>)}</h1> */}
-      <table>
+    
+      <table className="table table-striped table-hover text-center mt-5">
         <thead>
-          <tr><td>Name</td><td>Department</td><td>Add Achievement</td></tr>
+          <tr><th>Name</th><th>Department</th><th>Add Achievement</th></tr>
          
         </thead>
         <tbody id='tbody'>
       {wait && getdata.map(e => (
 
         <tr>
-          <td><h4>{e.name}</h4></td>
-          <td><h4>{e.department}</h4></td>
+          <td><b>{e.name}</b></td>
+          <td>{e.department}</td>
           <td><Link className='btn btn-success' to={{ pathname: `/user/newachivement/${e._id}` }}  >Add </Link></td>
         </tr>
 

@@ -35,10 +35,8 @@ function Table() {
     }, [getachivedata, getuserdata])
 
     const toggle = async () => {
-        // setwait(false)
         disp == 'View by User' ? setdispdata(getuserdata) : setdispdata(getachivedata);
         disp == 'View by User' ? setdisp('View by Achievement') : setdisp('View by User');
-        
     }
 
 
@@ -66,11 +64,12 @@ function Table() {
 
     return (
         <>
-            <div className="ms-4">
-                <input type="text" name="search" id="search" placeholder='Search for User' />
-                <button onClick={toggle}>{disp}</button>
+            <div className="d-flex justify-content-around mt-5">
+                <button onClick={toggle} className="btn btn-success">{disp}</button>
+                <input type="text" name="search" id="search" className='' placeholder='Search for User' />
             </div>
-            <div className="container">
+
+            <div className="container mt-5">
                 <table className="table table-striped table-hover text-center">
                     {disp == 'View by User' ?
                         <thead>

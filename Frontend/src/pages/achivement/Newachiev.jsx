@@ -4,6 +4,7 @@ import Axios from 'axios'
 import {useState} from 'react'
 import api_url from "../../constants/constant"
 import {useParams} from "react-router-dom"
+import NavBar from '../../components/navbar'
 
 function Newachiev(props) {
     const [title,setTitle]=useState('')
@@ -30,6 +31,7 @@ function Newachiev(props) {
 
   return (
     <div>
+        <NavBar />
          <div className="container" style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">
