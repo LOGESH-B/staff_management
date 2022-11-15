@@ -79,7 +79,7 @@ function Table() {
                                 <th scope="col">Name</th>
                                 <th scope="col">Department</th>
                                 <th scope="col">Year</th>
-                                <th scope="col">Achivements</th>
+                                <th scope="col">Achievements</th>
                                 <th scope="col">Awards</th>
                                 <th scope="col">View Profile</th>
 

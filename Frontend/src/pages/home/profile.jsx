@@ -37,11 +37,12 @@ function Profile() {
     <div>
     <NavBar/>
    <div className="container">
-      {wait && <div className='container' style={{marginTop:"100px"}}>
+      {wait && <div className='container' style={{marginTop:"30px"}}>
         <div className='row'>
         <div className='col-5'>
           <p><h3 style={{marginLeft:"10px",marginBottom:"20px"}}>Staff Details</h3></p>
           <div className="card mb-3">
+            <img src={getdata.imageurl} alt="" />
             <div className="card-body">
                 <ul className="list-group list-group-flush">
                 <h5 className="list-group-item">{getdata.name}</h5>

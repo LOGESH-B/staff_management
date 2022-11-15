@@ -11,8 +11,31 @@ function NewUser() {
     const [experiance,setexperiance]=useState('')
     const [department,setdepartment]=useState('')
     const [rank,setrank]=useState('')
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState("")
+    const [imageurl ,setImageurl] = useState('')
 
     const api= Axios.create({ baseURL: api_url})
+
+    const uploadImage = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'staff_award')
+        setLoading(true)
+        const res = await fetch("https://api.cloudinary.com/v1_1/djylwtcvn/image/upload",
+            {
+                method: 'POST',
+                body: data
+            })
+
+        const file = await res.json()
+        console.log(file)
+        console.log(file.url)
+        setImageurl(file.url)
+        setImage(file.secure_url)
+        setLoading(false)
+    }
 
     const handlesubmit=async (e)=>{
         e.preventDefault()
@@ -21,7 +44,8 @@ function NewUser() {
             email:email,
             experiance:experiance,
             department:department,
-            rank:rank
+            rank:rank,
+            imageurl:imageurl
         }
          console.log(data)
         await api.post('/user/newuser',data)
@@ -57,6 +81,17 @@ function NewUser() {
                                         <label className="form-label" for="rank">Rank</label>
                                         <input className="form-control" type="text" id="rank" name="rank" onChange={(e) => setrank(e.target.value)} autofocus required />
                                     </div>
+                                    <div className="mb-4">
+                                        <label className="form-label" for="cmpimg">Upload Image</label>
+                                        <input className="form-control" type="file" onChange={uploadImage} id="cmpimg" name="cmpimg" required />
+                                        {
+                                            loading ? (
+                                                <h5>Loading..</h5>
+                                            ) : (
+                                                <img src={image} style={{ width: '300px' }} alt=".." />
+                                            )
+
+                                        }</div>
                                     </div>
                                     <button className="btn but"  type="submit">Submit</button>
                                 </form>
