@@ -11,9 +11,6 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String
-    },
     achivements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Achievements' }],
     experiance: { type: Number },
     department: { type: String, required: true },

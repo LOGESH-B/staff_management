@@ -5,12 +5,50 @@ import NewUser from '../user/newuser'
 import NewAchiev from '../achivement/Newachiev'
 import Login from '../user/login'
 
+import { useEffect } from 'react'
+import decode from 'jwt-decode'
+import { useState } from 'react'
+
+
 function Home() {
-  
+  const [isloggedIn, setisloggedin] = useState(false)
+  const [wait, setwait] = useState(false)
+
+  useEffect(() => {
+    const result =  localStorage.getItem("usertoken")
+    console.log(result)
+    const token = result;
+    if (token) {
+      const decodedToken = decode(token)
+      if (decodedToken.exp * 1000 > new Date().getTime()) {
+        setisloggedin(true)
+        console.log(isloggedIn)
+      }
+    }
+    else{
+    console.log("token not found")
+    }
+  },[isloggedIn])
+  useEffect(() => {
+    if (isloggedIn) {
+        setwait(true)
+    }
+}, [isloggedIn])
+
+var nav;
+if(wait){
+  nav= <NavBar isloggedIn={isloggedIn} />
+}
+else{
+  nav= <NavBar isloggedIn={false} />
+}
+
   return (
     <>
-    <NavBar />
-    <Table   />
+    
+    {wait && <NavBar isloggedIn={isloggedIn} />}
+    {!wait && <NavBar isloggedIn={false} />}
+      <Table />
 
     </>
   )
