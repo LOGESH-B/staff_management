@@ -6,11 +6,15 @@ import api_url from '../../constants/constant'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavBar from '../../components/navbar'
+import {useNavigate} from 'react-router-dom'
+import decode from 'jwt-decode'
 
 function AddAchivements() {
   const [search, setSearch] = useState('')
   const [getdata, setData] = useState()
   const [wait, setwait] = useState(false)
+  const [isloggedIn, setisloggedin] = useState(false)
+  const navigate= useNavigate();
 
   async function apicall() {
     const api = Axios.create({ baseURL: api_url })
@@ -19,6 +23,22 @@ function AddAchivements() {
   }
   useEffect(() => {
     apicall()
+    const result =  localStorage.getItem("usertoken")
+    console.log(result)
+    const token = result;
+    if (token) {
+      const decodedToken = decode(token)
+      if (decodedToken.exp * 1000 > new Date().getTime()) {
+        console.log(isloggedIn)
+      }
+      else{
+        navigate('/')
+      }
+    }
+    else{
+      navigate('/')
+    console.log("token not found")
+    }
   }, [])
   useEffect(() => {
     if (getdata) {
@@ -47,7 +67,7 @@ function AddAchivements() {
 
   return (
     <div className=''>
-      <NavBar />
+      <NavBar isloggedIn={true} />
       <div className="text-center mt-5">
         <input type="text" name="search" style={{width:"30%"}} onChange={(e) => setSearch(e.target.value)} id="search" placeholder='Search for User' />
       </div>

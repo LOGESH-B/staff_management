@@ -4,8 +4,9 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import api_url from '../../constants/constant'
 import Axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import NavBar from '../../components/navbar'
+import {useNavigate} from "react-router-dom"
 import decode from 'jwt-decode'
 
 function Profile() {
@@ -13,6 +14,8 @@ function Profile() {
   const [wait, setwait] = useState(false)
   const [isloggedIn, setisloggedin] = useState(false)
 
+  const navigate= useNavigate();
+  
 
   const { id } = useParams()
 
@@ -51,8 +54,7 @@ function Profile() {
   return (
     <>
     <div>
-    {wait && <NavBar isloggedIn={isloggedIn} />}
-    {!wait && <NavBar isloggedIn={false} />}
+    <NavBar/>
    <div className="container">
       {wait && <div className='container' style={{marginTop:"30px"}}>
         <div className='row'>
