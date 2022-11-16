@@ -35,13 +35,6 @@ function Home() {
     }
 }, [isloggedIn])
 
-var nav;
-if(wait){
-  nav= <NavBar isloggedIn={isloggedIn} />
-}
-else{
-  nav= <NavBar isloggedIn={false} />
-}
 
   return (
     <>

@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <div>
-        <NavBar/>
+        <NavBar isloggedIn={false}/>
          <div className="container" style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">

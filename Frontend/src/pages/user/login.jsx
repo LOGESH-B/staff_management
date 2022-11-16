@@ -3,10 +3,7 @@ import "./newuser.css"
 import Axios from 'axios'
 import { useState } from 'react'
 import api_url from "../../constants/constant"
-<<<<<<< HEAD
 import {useNavigate} from "react-router-dom"
-=======
->>>>>>> b59da9d870a5662ea1a4da6e2cf79ce36ff80866
 import NavBar from '../../components/navbar'
 
 function Login() {
@@ -36,20 +33,12 @@ function Login() {
             navigate('/user/login')
 
         }
-
-<<<<<<< HEAD
     }
 
-    return (
-        <div>
-            <NavBar/>
-            <div className="container" style={{ marginTop: "50px", marginBottom: "50px" }}>
-=======
   return (
     <div>
         <NavBar/>
          <div className="container" style={{ marginTop: "90px", marginBottom: "50px" }}>
->>>>>>> b59da9d870a5662ea1a4da6e2cf79ce36ff80866
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">
                         <div className="card shadow">

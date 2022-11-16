@@ -6,10 +6,13 @@ import api_url from '../../constants/constant'
 import Axios from 'axios'
 import { useParams } from 'react-router-dom'
 import NavBar from '../../components/navbar'
+import decode from 'jwt-decode'
 
 function Profile() {
   const [getdata, setData] = useState()
   const [wait, setwait] = useState(false)
+  const [isloggedIn, setisloggedin] = useState(false)
+
 
   const { id } = useParams()
 
@@ -21,13 +24,26 @@ function Profile() {
   }
   useEffect(() => {
     apicall()
-  }, [])
+    const result =  localStorage.getItem("usertoken")
+    console.log(result)
+    const token = result;
+    if (token) {
+      const decodedToken = decode(token)
+      if (decodedToken.exp * 1000 > new Date().getTime()) {
+        setisloggedin(true)
+        console.log(isloggedIn)
+      }
+    }
+    else{
+    console.log("token not found")
+    }
+  }, [isloggedIn])
   useEffect(() => {
-    if (getdata) {
+    if (getdata && isloggedIn) {
       setwait(true)
       console.log(getdata)
     }
-  }, [getdata])
+  }, [getdata,isloggedIn])
 
 
   
@@ -35,7 +51,8 @@ function Profile() {
   return (
     <>
     <div>
-    <NavBar/>
+    {wait && <NavBar isloggedIn={isloggedIn} />}
+    {!wait && <NavBar isloggedIn={false} />}
    <div className="container">
       {wait && <div className='container' style={{marginTop:"30px"}}>
         <div className='row'>
