@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db=process.env.DB || "mongodb://localhost:27017/UID"
+const db=process.env.DB || "mongodb+srv://lokesh:lokesh123@cluster0.xgwog8b.mongodb.net/?retryWrites=true&w=majority"
 
 //db connection
 mongoose.connect(db).then(() => {
@@ -43,8 +43,6 @@ mongoose.connect(db).then(() => {
 //routers
 app.use('/user', userRoutes)
 app.use('/achievement', achievementRoutes)
-
-
 
 
 //listening port

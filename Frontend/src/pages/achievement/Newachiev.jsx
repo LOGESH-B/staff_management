@@ -36,7 +36,7 @@ function Newachiev(props) {
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-xl-6 offset-xl-3">
                         <div className="card shadow">
-                            <div><p className="card-title reg">Add Achivement</p></div>
+                            <div><p className="card-title reg">Add Achievement</p></div>
                             <div className="card-body">
                                 <form onSubmit={handlesubmit} method="post" className="validated-form" noValidate>
                                     <div className="mb-3">

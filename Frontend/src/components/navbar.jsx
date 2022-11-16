@@ -1,6 +1,3 @@
-
-
-
 import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
@@ -25,27 +22,28 @@ function NavBar(props) {
     login =
       <>
         <li className="nav-item">
-          <Link to='/user/getalluser' className="nav-link " aria-current="page">Add Achievements</Link>
-        </li>
+    <Link to='/user/getalluser' className="nav-link " style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page"><i style={{marginRight:"4px"}} class="fa-solid fa-trophy"></i> Add Achievements</Link>
+  </li>
         <li className="nav-item">
-          <span className="nav-link "  onClick={logout} aria-current="page">Logout</span>
+          <span className="nav-link "  style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page" onClick={logout} >Logout</span>
         </li>
       </>
 
   } else {
-    login = <li className="nav-item">
-      <Link to='/user/login' className="nav-link" aria-current="page">Login</Link>
-    </li>
+    login = 
+  <li className="nav-item">
+    <Link to='/user/login' className="nav-link active" style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page"><i class="fa-solid fa-right-to-bracket"style={{marginRight:"4px"}}></i> Login</Link>
+  </li>
   }
 
   return (
     <>
-      <div className="container">
+      <div >
 
 
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg" style={{background:"#3c3d40"}}>
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">Navbar</a>
+            <a className="navbar-brand" href="#" style={{color:"whitesmoke"}}><i style={{marginLeft:"20px"}} class="fa-sharp fa-solid fa-street-view"></i></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -53,10 +51,11 @@ function NavBar(props) {
               <div className="collapse navbar-collapse " id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to='/' className="nav-link active" aria-current="page">Home</Link>
+                    <Link to='/' className="nav-link active" style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page"><i class="fa-solid fa-house-user" style={{marginRight:"4px"}}></i> Home</Link>
                   </li>
                   {login}
 
+              
                 </ul>
               </div>
             </div>

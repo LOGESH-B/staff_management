@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import api_url from '../../constants/constant'
 import Axios from 'axios'
 import { useParams } from 'react-router-dom'
+import NavBar from '../../components/navbar'
 
 function Profile() {
   const [getdata, setData] = useState()
@@ -33,15 +34,28 @@ function Profile() {
 
   return (
     <>
+    <div>
+    <NavBar/>
    <div className="container">
-      {wait && <div>
-        <h3>{getdata.name}</h3>
-        <h3>{getdata.department}</h3>
-        <h3>{getdata.experiance}</h3>
-        <h3>{getdata.achivements[0].title}</h3>
-        <table className="table table-striped table-hover text-center">
+      {wait && <div className='container' style={{marginTop:"30px"}}>
+        <div className='row'>
+        <div className='col-5'>
+          <p><h3 style={{marginLeft:"10px",marginBottom:"20px"}}>Staff Details</h3></p>
+          <div className="card mb-3">
+            <img src={getdata.imageurl} alt="" />
+            <div className="card-body">
+                <ul className="list-group list-group-flush">
+                <h5 className="list-group-item">{getdata.name}</h5>
+                <li className="list-group-item">Department :  {getdata.department}</li>
+                <li className="list-group-item">Experience :  {getdata.experiance} years</li>
+            </ul>
+            </div></div>
+        </div>
+        <div className='col-7'>
+        <p><h3 style={{marginLeft:"40px",marginBottom:"20px"}}>Awards</h3></p>
+        <table className="table table-striped table-hover text-center" style={{marginLeft:"30px"}}>
           <thead>
-            <tr>
+            <tr className='table-secondary'>
               <th>Title</th>
               <th>Year</th>
               <th>Recognitions</th>
@@ -57,9 +71,10 @@ function Profile() {
             ))}
           </tbody>
 
-
         </table>
+        </div></div>
       </div>}
+      </div>
       </div>
     </>
 

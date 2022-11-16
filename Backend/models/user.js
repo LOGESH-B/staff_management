@@ -14,8 +14,8 @@ const userSchema = new Schema({
     achivements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Achievements' }],
     experiance: { type: Number },
     department: { type: String, required: true },
-    rank: { type: String, required: true }
-
+    rank: { type: String, required: true },
+    imageurl:{type:String}
 })
 
 
