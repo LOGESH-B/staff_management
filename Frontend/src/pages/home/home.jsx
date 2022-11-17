@@ -8,6 +8,7 @@ import Login from '../user/login'
 import { useEffect } from 'react'
 import decode from 'jwt-decode'
 import { useState } from 'react'
+import "./home.css"
 
 
 function Home() {

@@ -25,7 +25,7 @@ function NavBar(props) {
     <Link to='/user/getalluser' className="nav-link " style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page"><i style={{marginRight:"4px"}} class="fa-solid fa-trophy"></i> Add Achievements</Link>
   </li>
         <li className="nav-item">
-          <span className="nav-link "  style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page" onClick={logout} >Logout</span>
+          <span className="nav-link "  style={{color:"whitesmoke",marginRight:"10px"}} aria-current="page" onClick={logout} ><i class="fa-solid fa-right-to-bracket"style={{marginRight:"4px"}}></i> Logout</span>
         </li>
       </>
 
