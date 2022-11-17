@@ -3,13 +3,14 @@ import "./newachiev.css"
 import Axios from 'axios'
 import {useState} from 'react'
 import api_url from "../../constants/constant"
-import {useParams} from "react-router-dom"
+import { useNavigate, useParams} from "react-router-dom"
 import NavBar from '../../components/navbar'
 
 function Newachiev(props) {
     const [title,setTitle]=useState('')
     const [year,setYear]=useState('')
     const [recognitions,setRecognitions]=useState('')
+    const navigate=useNavigate()
 
     //data from params
     const {id}=useParams()
@@ -27,6 +28,7 @@ function Newachiev(props) {
         }
          console.log(data)
          await api.post(`/achievement/newachievement/${id}`,data)
+         navigate('/')
         }
 
   return (

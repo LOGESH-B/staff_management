@@ -19,3 +19,11 @@ module.exports.allachievement=async(req,res)=>{
     res.json({achivement:data,user:userdata})
     // console.log(data)
 }
+
+module.exports.deleteachievement=async(req,res)=>{
+    const {id}=req.params
+    console.log(id)
+    const result=await Achievement.findByIdAndDelete(id)
+    if(result)res.json({message:'deleted'})
+    else res.json({message:'error'})
+}

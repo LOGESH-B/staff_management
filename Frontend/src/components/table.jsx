@@ -23,6 +23,7 @@ function Table() {
         const res = await api.get('/achievement/getallachievement');
         setachiveData(res.data.achivement)
         setuserData(res.data.user)
+        console.log(res.data.achivement)
     }
     useEffect(() => {
         apicall()
@@ -60,6 +61,12 @@ function Table() {
         }
     }, []);
 
+    // async function deleteachievement(id){
+    //     console.log(id)
+    //     const api = Axios.create({ baseURL: api_url })
+    //     const res = await api.get(`/achievement/${id}/delete`);
+    //    if()
+    // }
 
 
     return (
@@ -82,6 +89,7 @@ function Table() {
                                 <th scope="col">Achievements</th>
                                 <th scope="col">Awards</th>
                                 <th scope="col">View Profile</th>
+                                {/* <th scope="col">Action</th> */}
 
                             </tr>
                         </thead> : <thead>
@@ -90,7 +98,6 @@ function Table() {
                                 <th scope="col">Name</th>
                                 <th scope="col">Department</th>
                                 <th scope="col">View Profile</th>
-
                             </tr>
                         </thead>}
                     <tbody id='tbody'>
@@ -107,7 +114,7 @@ function Table() {
                                     <td>{e.title}</td>
                                     <td>{e.recognitions}</td>
                                     <td><Link to={{ pathname: `/user/viewProfile/${e.achiever_id._id}` }} style={{color:"#7e3ab5"}}>View  </Link></td>
-
+                                    {/* <td><div><button className='btn btn-danger' onClick={deleteachievement(e._id)}>Delete</button></div></td> */}
                                 </tr>))
                             :
                             wait && dispdata.map((e, i) => (<tr className=''>

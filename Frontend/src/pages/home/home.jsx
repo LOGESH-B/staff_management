@@ -43,7 +43,9 @@ function Home() {
     <div>
       <h6 className='h'>Staff Award Management</h6>
     </div>
-    <Table/>
+    {wait && <Table isloggedIn={isloggedIn}/>}
+    {!wait && <Table isloggedIn={false} />}
+    
     </>
   )
 }
